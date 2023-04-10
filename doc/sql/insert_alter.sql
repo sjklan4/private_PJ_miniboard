@@ -1,0 +1,2 @@
+-- ALTER TABLE board_info ADD PRIMARY KEY (board_no);
+--ALTER TABLE board_info MODIFY board_no INT NOT NULL AUTO_INCREMENT;
