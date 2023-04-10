@@ -1,10 +1,19 @@
-.warp{
-    padding: 20%;
+.wrap{
+    padding: 10%;
+    margin: 10%;
+    
 }
-.cap {
-    text-align: center;
+
+.cap{
+    /* text-align: center; */
     color: green;
     font-size: 40px;
-
+    font-style: inherit;
+    margin: 20px;
+    padding: 10px;
 }
 
+.head{
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+}

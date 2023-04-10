@@ -65,9 +65,11 @@
         <!-- php와 연동을 위해서 '' 로 추가구문 작성 -->
             <thead> 
                 <tr>
-                    <th>게시글 번호</th>
-                    <th>게시글 제목</th>
-                    <th>작성일자</th>
+                    <div class='head'>
+                        <th>게시글 번호</th>
+                        <th>게시글 제목</th>
+                        <th>작성일자</th>
+                    </div>
                 </tr>
             </thead>
             <tbody>
