@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+
+
+body{
+    text-align: center;
+}
+
+.update_list
+{
+    border: 2px solid rgb(172, 172, 172);
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 30px;
+    width: 500px;
+    height: 600px;
+    position: relative;
+    top :40px;
+    left : 200px;
+    font-family: 'Cute Font', cursive;
+    font-size: 25px;
+}
+
+
+.update_list .bno_style
+{
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(9, 56, 7);
+    border-top: 9px solid rgb(9,56,7);
+    border-left: 5px solid rgb(9, 56, 7);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 10px;
+    font-size: 30px;
+    
+}
+
+
+.update_list .bno_style .no
+{
+    position: absolute;
+    top :7%;
+    left : 9%;
+    background-color: rgb(9, 56, 7);
+    color: rgb(243, 239, 239);
+    border-bottom-right-radius: 10px;
+    
+   
+}
+
+
+
+.update_list .bno_style :hover
+{
+    background-color: rgb(33, 209, 27);
+
+}

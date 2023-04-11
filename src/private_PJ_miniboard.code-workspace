@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "C:/Apache24/htdocs"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "private_PJ_miniboard"
+	}
+}

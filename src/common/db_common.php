@@ -107,20 +107,95 @@ function select_board_info_cnt()
     return $result;
 }
 
+function select_board_info_no( &$param_no)
+{
+    $sql =" SELECT board_no, board_title, board_contents
+            FROM board_info
+            WHERE board_no = :board_no " ;
+                
+
+    $arr_prepare = array(
+        ":board_no" => $param_no
+    );
+
+    $conn = null;
+    try 
+    {
+        db_conn( $conn ); //데이터 베이스 연동이 유지가 되게 되면 다른 유저들이 접근을 할 수가 없어서 쿼리 연동시 항상 종료 하는 조건을 붙인다.
+        $stmt = $conn->prepare( $sql );
+        $stmt->execute( $arr_prepare );
+        $result = $stmt->fetchall(); //데이터 베이스에서 넘겨주는 정보를 가져오는것
+
+    } 
+    catch ( Exception $e) 
+    {
+        return $e->getmessage() === "오류 다시 보세요";
+    }
+    finally //성공여부와 상관없이 null로 커넥션을 초기화 시켜준다.
+    {
+        $conn = null;
+    }
+ //비정상 작동시 try문에서 finally를 실행시키고 catch 문의 값을 리턴시킨다. 그러나 정상 작동시 finally가 작동하고 return을 시킨다. 
+    return $result[0];
+};  
+
+// 게시판 특정 게시글 정보 수정(업데이트시에 변경된 행의 번호를 숫자로 넘겨 받는다.)
+function update_board_info_no( &$param_arr )
+{
+    $sql = 
+        " UPDATE "
+        ." board_info "
+        ." SET "
+        ." board_title = :board_title "
+        ." ,board_contents =:board_contents "
+        ." WHERE "
+        ." board_no =:board_no "
+        ; 
+
+    $arr_prepare = 
+        array(
+            ":board_title" => $param_arr["board_title"]
+            ,":board_contents" => $param_arr["board_contents"]
+            ,":board_no" => $param_arr["board_no"]
+        );
+
+        $conn = null;
+        try 
+        {
+            db_conn( $conn ); //PDO object 셋
+            $conn->beginTransaction(); //Transaction 시작
+            $stmt = $conn->prepare( $sql ); //statement object 셋팅
+            $stmt->execute( $arr_prepare ); //DB request
+            $result_cnt = $stmt->rowCount(); // 업데이트 되서 영향을 받은 행의 숫자를 가져온다.
+            $conn->commit();
+        } 
+        catch ( Exception $e) 
+        {
+            $conn->rollbakc(); // 트랜잭션이 진행중에 오류가 나면 롤백을 시켜서 돌려 준다.
+            return $e->getmessage() === "다시 입력하세요";
+        }
+        finally //성공여부와 상관없이 null로 커넥션을 초기화 시켜준다.
+        {
+            $conn = null;
+        }
+     //비정상 작동시 try문에서 finally를 실행시키고 catch 문의 값을 리턴시킨다. 그러나 정상 작동시 finally가 작동하고 return을 시킨다. 
+        return $result_cnt;
+}
+$arr = 
+    array(
+        "board_no" => 1
+        ,"board_title" => "test1"
+        ,"board_contents" => "testtest1"
+    );
+
+echo update_board_info_no( $arr );
 
 
+// //TODO : test start
 
-
-
-//TODO : test start
-
-// $arr = array("limit_num" => 5
-//             ,"offset" => 0 );
-// $result = select_board_info_paging( $arr );
-
-// print_r( $result );
-
-//TODO : test End
+// $i=20;
+// print_r(select_board_info_no( $i ));
+// //TODO : test End
 
 
 
