@@ -63,7 +63,7 @@ function select_board_info_paging( &$param_arr)
     } 
     catch ( Exception $e) 
     {
-        return $e->getmessage() === "오류 다시 보세요";
+        return $e->getMessage();
     }
     finally //성공여부와 상관없이 null로 커넥션을 초기화 시켜준다.
     {
@@ -97,7 +97,7 @@ function select_board_info_cnt()
     } 
     catch ( Exception $e) 
     {
-        return $e->getmessage() === "오류 다시 보세요";
+        return $e->getMessage();
     }
     finally //성공여부와 상관없이 null로 커넥션을 초기화 시켜준다.
     {
@@ -107,9 +107,10 @@ function select_board_info_cnt()
     return $result;
 }
 
+//작성 내용에 관련된 데이터와 작성일자 데이터 추출을 위한 함수 추가
 function select_board_info_no( &$param_no)
 {
-    $sql =" SELECT board_no, board_title, board_contents
+    $sql =" SELECT board_no, board_title, board_contents, board_write_date
             FROM board_info
             WHERE board_no = :board_no " ;
                 
@@ -126,10 +127,11 @@ function select_board_info_no( &$param_no)
         $stmt->execute( $arr_prepare );
         $result = $stmt->fetchall(); //데이터 베이스에서 넘겨주는 정보를 가져오는것
 
+
     } 
     catch ( Exception $e) 
     {
-        return $e->getmessage() === "오류 다시 보세요";
+        return $e->getMessage();
     }
     finally //성공여부와 상관없이 null로 커넥션을 초기화 시켜준다.
     {
@@ -172,7 +174,7 @@ function update_board_info_no( &$param_arr )
         catch ( Exception $e) 
         {
             $conn->rollbakc(); // 트랜잭션이 진행중에 오류가 나면 롤백을 시켜서 돌려 준다.
-            return $e->getmessage() === "다시 입력하세요";
+            return $e->getMessage();
         }
         finally //성공여부와 상관없이 null로 커넥션을 초기화 시켜준다.
         {
@@ -181,14 +183,53 @@ function update_board_info_no( &$param_arr )
      //비정상 작동시 try문에서 finally를 실행시키고 catch 문의 값을 리턴시킨다. 그러나 정상 작동시 finally가 작동하고 return을 시킨다. 
         return $result_cnt;
 }
-$arr = 
-    array(
-        "board_no" => 1
-        ,"board_title" => "test1"
-        ,"board_contents" => "testtest1"
-    );
 
-echo update_board_info_no( $arr );
+//delete_board_info_no 게시판 특정 게시글 정보 삭ㅈ플러그 갱신
+function delete_board_info_no( &$param_no )
+{
+    $sql = " UPDATE " 
+            ." board_info "
+            ." SET " 
+            ." board_del_flg = '1' "
+            ." ,board_del_date = NOW() "
+            ." WHERE " 
+            ." board_no = :board_no "
+            ;
+    $arr_prepare = 
+        array(
+            ":board_no" => $param_no
+        );
+    $conn = null;
+    
+    try
+    {
+        db_conn( $conn );
+        $conn->beginTransaction();
+        $stmt = $conn->prepare( $sql );
+        $stmt->execute($arr_prepare);
+        $result_cnt = $stmt->rowCount();
+        $conn->commit();
+    }
+    catch(Exception $e)
+    {
+        $conn->rollback();
+        return $e->getMessage();
+    }
+    finally
+    {
+        $conn = null;
+    }
+    return $result_cnt;
+}
+
+// $arr = 
+//     array(
+//         "board_no" => 1
+//         ,"board_title" => "test1"
+//         ,"board_contents" => "testtest1"
+//     );
+
+// echo update_board_info_no( $arr );
 
 
 // //TODO : test start

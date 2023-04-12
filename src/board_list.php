@@ -78,7 +78,7 @@
             <!-- tr은 html 값으로 php 범위 밖에 지정하였다. a태그를 사용해서 제목 내용을 선택시 업데이트 창으로 움직이도록 만든다. -->
                 <tr> 
                     <td><?php echo $recode["board_no"] ?></td>
-                    <td><a href="board_update.php?board_no=<?php echo $recode["board_no"]?>"><?php echo $recode["board_title"] ?></a></td> 
+                    <td><a href="board_detail.php?board_no=<?php echo $recode["board_no"]?>"><?php echo $recode["board_title"] ?></a></td> 
                     <td><?php echo $recode["board_write_date"] ?></td>
                 </tr>
 

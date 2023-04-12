@@ -31,8 +31,13 @@
         // update 
         $result_cnt = update_board_info_no($arr_info);
 
-        // select
-        $result_info = select_board_info_no( $arr_post["board_no"] );
+        // // select 업데이트한 데이터를 수정페이지에 표시 시켜준다.
+        // $result_info = select_board_info_no( $arr_post["board_no"] );0412 del
+
+        //다른 화면으로 넘어가기 위한 방벙식.
+        header( "Location: board_detail.php?board_no=".$arr_post["board_no"]);
+        exit(); //36행에서 redirect 했기 때문에 이후의 소스코드는 실행할 필요 없디.이 밑으로 있는것들은 코드 실행 안함(버그 방지 안닫아도 문제는 크게 없다.)
+
     }
 
     
@@ -54,26 +59,32 @@
 <form method = "post" action="board_update.php" >
     <div class='update_list'>
         <div class='bno_style'>
-            <div class='no'>게시글 번호</div>
+            <div class='no'>BOARD.NUM</div>
             <span><?php echo $result_info["board_no"] ?></span>
             <input type='hidden' name='board_no' value='<?php echo $result_info["board_no"] ?>'id ='bno' readonly>
         </div>
             <br>
         <div class='title_style'>
-            <div class='ti'><label for='title'>게시글 제목  </label></div> 
+            <div class='ti'>BOARD.TITLE</div> 
+            <!-- <span><?php //echo $result_info["board_title"] ?></span> -->
             <input type='text' name='board_title' value='<?php echo $result_info["board_title"] ?>' id='title'>
         </div>
             <br>
         <div class='contents_style'>
-            <div class='tx'><label for='contents'>게시글 내용 </div></label> 
+            <div class='tx'>BOARD.CONT </div>
+            <!-- <span><?php //echo $result_info["board_contents"] ?></span> -->
         <input type='text' name='board_contents' value='<?php echo $result_info["board_contents"] ?>' id='contents'>
         </div>
             <br>
+
         <div class='submit_style'>
-            <button type ='submit'>수정</button>
+            <button type ='submit'><a>UPDATE</a></button>
             <button type ='submit'>
-                <a href="board_list.php?page_num=<?php echo $page_num = 1 ?>"> 리스트</button>
+                <a href="board_list.php?page_num=<?php echo $page_num = 1 ?>">LIST</button>
+            <button type="button">
+            <a href="board_detail.php?board_no=<?php echo $result_info["board_no"]?>">ESC</a></button>
         </div>
+        
     </div>    
 </form>
 
