@@ -2,6 +2,7 @@
 <?php
     define( "DOC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/" );
     define( "URL_DB", DOC_ROOT."private_PJ_miniboard/src/common/db_common.php" );
+    define( "URL_HEADER", DOC_ROOT."private_PJ_miniboard/src/board_header.php" );
     include_once( URL_DB ); //경로상의 파일을 가져오는 함수구문 
     
 
@@ -58,6 +59,7 @@
     
 </head>
 
+    <?php include_once( URL_HEADER ); ?>
 <div class='wrap'>
     <div class='cap'> BOARD INFORMATION</div>
     <table class='table table-striped'>
@@ -88,7 +90,6 @@
         </tbody>
     </table>
     <div class='tag_a'>
-
         <a href ='board_list.php?page_num=1'>
             <img src = "./img/left_end.png"/></a>   
 
@@ -123,6 +124,8 @@
             ?> 
         <a href ='board_list.php?page_num=<?php echo (int)$max_page_num ?>'>
             <img src = "./img/right_end.png"/></a>
+
+        <button type ="button"><a href="board_insert.php" id = "write_a"> 게시글 작성</a></button>
         </div>
 </div>
 </body>
