@@ -1,14 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
 
+
+
 body{
     text-align: center;
     padding: 5%;
     margin: 3%;
-
+}
+#bno{
+    background-color: transparent;
+}
+#title{
+    background-color: transparent;
+}
+#contents{
+    background-color: transparent;
 }
 
-
-.detail_list
+.update_list 
 {
     border: 2px solid rgb(12, 49, 2);
     border-left: 7px solid rgb(12, 49, 2);
@@ -19,43 +28,50 @@ body{
     padding: 30px;
     width: 80%;
     height: 800px;
+    /* width: 800px;
+    height: 900px; */
     position: relative;
     top :20px;
     left : 100px;
     font-family: 'Cute Font', cursive;
     font-size: 25px;
 }
-
-
-.detail_list .bno_style 
+input[type="text"]
+{
+    font-family: 'Cute Font', cursive;
+    font-size: 25px;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+.update_list .bno_style 
 {
     color: rgb(0, 0, 0);
     border: 2px solid rgb(9, 56, 7);
     border-top: 9px solid rgb(9,56,7);
     border-left: 5px solid rgb(9, 56, 7);
     border-radius: 10px;
+    /* width: 300px; */
     box-sizing: border-box;
-    padding-top: 30px;
-    margin: 5px;
+    padding: 20px;
+    margin: 10px;   
     font-size: 30px;
+    
 }
-
-.detail_list .bno_style .no
+.update_list .bno_style .no
 {
     position: absolute;
-    top : 35px;
-    left : 35px;
+    top :5%;
+    left : 5%;
     background-color: rgb(9, 56, 7);
     color: rgb(243, 239, 239);
     border-bottom-right-radius: 10px;
     border-top-left-radius: 10px;
     width: 150px;
-    height: 40px;
-
+    
 }
 
-
-.detail_list .write_style 
+.update_list .title_style 
 {
     color: rgb(0, 0, 0);
     border: 2px solid rgb(9, 56, 7);
@@ -63,30 +79,24 @@ body{
     border-left: 5px solid rgb(9, 56, 7);
     border-radius: 10px;
     box-sizing: border-box;
-    padding-top: 30px;
+    padding: 20px;
     margin: 10px;
     font-size: 30px;
     
 }
-.detail_list .write_style:hover{
-    background-color: rgb(214, 216, 218);
-}
-.detail_list .write_style .wd
+.update_list .title_style .ti
 {
     position: absolute;
-    top : 154px;
+    top : 47px;
     left : 40px;
     background-color: rgb(9, 56, 7);
     color: rgb(243, 239, 239);
     border-bottom-right-radius: 10px;
     border-top-left-radius: 10px;
     width: 150px;
-    height: 40px;
-
-    
 }
 
-.detail_list .title_style 
+.update_list .contents_style 
 {
     color: rgb(0, 0, 0);
     border: 2px solid rgb(9, 56, 7);
@@ -94,60 +104,37 @@ body{
     border-left: 5px solid rgb(9, 56, 7);
     border-radius: 10px;
     box-sizing: border-box;
-    padding-top: 30px;
+    padding: 20px;
     margin: 10px;
     font-size: 30px;
+    height: 50%;
     
 }
-.detail_list .title_style:hover{
-    background-color: rgb(214, 216, 218);
-}
-.detail_list .title_style .ti
+.update_list .contents_style .tx
 {
     position: absolute;
-    top :272px;
-    left : 42px;
+    top :180px;
+    left : 40px;
     background-color: rgb(9, 56, 7);
     color: rgb(243, 239, 239);
     border-bottom-right-radius: 10px;
     border-top-left-radius: 10px;
     width: 150px;
-    height: 40px;
-    
 }
 
-.detail_list .contents_style 
+
+
+.update_list .bno_style:hover
 {
-    color: rgb(0, 0, 0);
-    border: 2px solid rgb(9, 56, 7);
-    border-top: 9px solid rgb(9,56,7);
-    border-left: 5px solid rgb(9, 56, 7);
-    border-radius: 10px;
-    box-sizing: border-box;
-    padding-top: 30px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 40px;
-    font-size: 30px;
-    height: 200px;
-    
+    background-color: #EEF2E6;
 }
-.detail_list .contents_style:hover{
-    background-color: rgb(214, 216, 218);
-}
-.detail_list .contents_style .tx
+.update_list .title_style:hover
 {
-    position: absolute;
-    top :390px;
-    left : 42px;
-    background-color: rgb(9, 56, 7);
-    color: rgb(243, 239, 239);
-    border-bottom-right-radius: 10px;
-    border-top-left-radius: 10px;
-    width: 150px;
-    height: 40px;
-    
+    background-color: #EEF2E6;
+}
+.update_list .contents_style:hover
+{
+    background-color: #EEF2E6;
 }
 
 #write_a
@@ -155,6 +142,7 @@ body{
     color: aliceblue;
     text-decoration: none;
 }
+
 
 
 button
@@ -166,26 +154,9 @@ button
     
 }
 
+
 button:hover
 {
-   transform: rotateY( 360deg );
-   transition: all 0.5s linear;
-}
-
-.detail_list .bno_style:hover
-{
-    background-color: #EEF2E6
-}
-.detail_list .write_style:hover
-{
-    background-color: #EEF2E6
-}
-
-.detail_list .title_style:hover
-{
-    background-color: #EEF2E6
-}
-.detail_list .contents_style:hover
-{
-    background-color: #EEF2E6
+    transform: rotateY( 360deg );
+    transition: all 0.5s linear;
 }

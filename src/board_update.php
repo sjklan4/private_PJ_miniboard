@@ -1,6 +1,7 @@
 <?php
     define( "DOC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/" ); //dcounemtroot는 아파치 안에 있는 htdocs에 있는 주소가 저장 되고 뒤에 상세 주로를 입력
     define( "URL_DB", DOC_ROOT."private_PJ_miniboard/src/common/db_common.php" ); // DOC_ROOOT에 상위 define이 들어가 있고 이것을 include에서 사용한다.
+    define( "URL_HEADER", DOC_ROOT."private_PJ_miniboard/src/board_header.php" );
     include_once( URL_DB ); //경로상의 파일을 가져오는 함수구문 / 파일들의 위치가 많기 때문에 상수로 주소를 고정 시켜 놓고 가져온다.
   
 
@@ -55,7 +56,7 @@
 </head>
 
 <body>
-    
+<?php include_once( URL_HEADER ); ?>
 <form method = "post" action="board_update.php" >
     <div class='update_list'>
         <div class='bno_style'>
@@ -78,11 +79,11 @@
             <br>
 
         <div class='submit_style'>
-            <button type ='submit'><a>UPDATE</a></button>
+            <button type ='submit'><a id = "write_a">UPDATE</a></button>
             <button type ='submit'>
-                <a href="board_list.php?page_num=<?php echo $page_num = 1 ?>">LIST</button>
+                <a href="board_list.php?page_num=<?php echo $page_num = 1 ?>" id = "write_a">LIST</button>
             <button type="button">
-            <a href="board_detail.php?board_no=<?php echo $result_info["board_no"]?>">ESC</a></button>
+            <a href="board_detail.php?board_no=<?php echo $result_info["board_no"]?>" id = "write_a">ESC</a></button>
         </div>
         
     </div>    

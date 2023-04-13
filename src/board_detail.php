@@ -1,6 +1,7 @@
 <?php
         define( "DOC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/" );
         define( "URL_DB", DOC_ROOT."private_PJ_miniboard/src/common/db_common.php" );
+        define( "URL_HEADER", DOC_ROOT."private_PJ_miniboard/src/board_header.php" );
         include_once( URL_DB ); //경로상의 파일을 가져오는 함수구문 
 
         // Request Parameter 획득(GET)
@@ -21,8 +22,9 @@
     <title>Detail</title>
 </head>
 <body>
+<?php include_once( URL_HEADER ); ?>
     <div class= 'detail_list'>
-        <div class='bno_stlye'>
+        <div class='bno_style'>
             <div class='no'>NO.</div>
                 <?php echo $result_info["board_no"]?></p>
         </div>
@@ -42,12 +44,12 @@
 
         <div class='button_style'>
             <button type="button">
-                <a href="board_update.php?board_no=<?php echo $result_info["board_no"]?>">UPDATE</a></button> 
+                <a href="board_update.php?board_no=<?php echo $result_info["board_no"]?>" id = "write_a">UPDATE</a></button> 
             <!-- 수정 버튼은 현재 boardno의 것이 와야 되기 때문에 result값을 받아온다. -->
             <button type="button">
-                <a href="board_list.php?page_num=<?php echo $page_num = 1 ?>">LIST</a></button>
+                <a href="board_list.php?page_num=<?php echo $page_num = 1 ?>" id = "write_a">LIST</a></button>
 
-            <button type ="button"><a href="board_delete.php?board_no=<?php echo $result_info["board_no"]?>">DELETE</a></button>
+            <button type ="button"><a href="board_delete.php?board_no=<?php echo $result_info["board_no"]?>" id = "write_a">DELETE</a></button>
         </div>
     </div>
 </body>

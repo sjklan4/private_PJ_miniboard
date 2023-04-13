@@ -184,7 +184,7 @@ function update_board_info_no( &$param_arr )
         return $result_cnt;
 }
 
-//delete_board_info_no 게시판 특정 게시글 정보 삭ㅈ플러그 갱신
+//delete_board_info_no 게시판 특정 게시글 정보 삭제플러그 갱신
 function delete_board_info_no( &$param_no )
 {
     $sql = " UPDATE " 
@@ -222,6 +222,54 @@ function delete_board_info_no( &$param_no )
     return $result_cnt;
 }
 
+//데이터를 인설트 하는 함수
+function insert_board_info( &$param_arr)
+{
+    $sql = " INSERT INTO board_info( "         
+    ." board_title "
+    ." ,board_contents "
+    ." ,board_write_date "
+    . " ) "
+    ." VALUES ( "
+    ." :board_title "
+    ." ,:board_contents "
+    ." ,NOW() "
+    ." ) "
+    ;
+
+    $arr_prepare =
+        array(
+            ":board_title" => $param_arr["board_title"]
+            ,":board_contents" => $param_arr["board_contents"]
+        );
+
+        $conn = null;
+        try 
+        {
+            db_conn( $conn ); //PDO object 셋
+            $conn->beginTransaction(); //Transaction 시작 : 데이터를 변경하기(insert, update, delete) 때문에 일련의 연산이 완료되면 commit 실패시 rollback을 통해서 데이터를 관리 하게 시킨다. 
+            $stmt = $conn->prepare( $sql ); //statement object 셋팅
+            $stmt->execute( $arr_prepare ); //DB request
+            $result_cnt = $stmt->rowCount(); // 업데이트 되서 영향을 받은 행의 숫자를 가져온다.
+            $conn->commit();
+        } 
+        catch ( Exception $e) 
+        {
+            $conn->rollback(); // 트랜잭션이 진행중에 오류가 나면 롤백을 시켜서 돌려 준다.
+            return $e->getMessage();
+        }
+        finally //성공여부와 상관없이 null로 커넥션을 초기화 시켜준다.
+        {
+            $conn = null;
+        }
+     //비정상 작동시 try문에서 finally를 실행시키고 catch 문의 값을 리턴시킨다. 그러나 정상 작동시 finally가 작동하고 return을 시킨다. 
+        return $result_cnt;    
+
+
+}
+
+
+
 // $arr = 
 //     array(
 //         "board_no" => 1
@@ -232,11 +280,10 @@ function delete_board_info_no( &$param_no )
 // echo update_board_info_no( $arr );
 
 
-// //TODO : test start
-
-// $i=20;
-// print_r(select_board_info_no( $i ));
-// //TODO : test End
+//TODO : test start
+// $arr = array("board_title" => "test", "board_contents" => "test contents");
+// echo insert_board_info($arr);
+//TODO : test End
 
 
 
