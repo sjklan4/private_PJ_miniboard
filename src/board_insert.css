@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
 
-
+/* .head
+{
+    border-top: 4px solid rgb(4, 51, 4);
+    border-bottom: 4px solid rgb(4, 51, 4);
+} */
 
 body{
     text-align: center;
     padding: 5%;
     margin: 3%;
+    border-top: 10px solid rgb(4, 51, 4);
+    border-bottom: 10px solid rgb(4, 51, 4);
 }
 #bno{
     background-color: transparent;
@@ -17,6 +23,12 @@ body{
     background-color: transparent;
 }
 
+a
+{
+    color: rgb(4, 59, 4);
+    text-decoration: none;
+    
+}
 .update_list 
 {
     border: 2px solid rgb(12, 49, 2);

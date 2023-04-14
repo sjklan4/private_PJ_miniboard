@@ -4,7 +4,16 @@ body{
     text-align: center;
     padding: 5%;
     margin: 3%;
+    border-top: 10px solid rgb(4, 51, 4);
+    border-bottom: 10px solid rgb(4, 51, 4);
 
+}
+
+a
+{
+    color: rgb(4, 59, 4);
+    text-decoration: none;
+    
 }
 
 
@@ -139,7 +148,7 @@ body{
 .detail_list .contents_style .tx
 {
     position: absolute;
-    top :390px;
+    top :360px;
     left : 42px;
     background-color: rgb(9, 56, 7);
     color: rgb(243, 239, 239);
@@ -150,12 +159,20 @@ body{
     
 }
 
-#write_a
+
+button>a ,#write_a
 {
     color: aliceblue;
-    text-decoration: none;
+    display: block;
 }
-
+button>a ,#write_b
+{
+    color: aliceblue;
+}
+button>a ,#write_c
+{
+    color: aliceblue;
+}
 
 button
 {
@@ -168,8 +185,8 @@ button
 
 button:hover
 {
-   transform: rotateY( 360deg );
-   transition: all 0.5s linear;
+    transform: rotateY( 360deg );
+    transition: all 0.5s linear;
 }
 
 .detail_list .bno_style:hover

@@ -30,7 +30,7 @@
     <title>게시글 작성</title>
 </head>
 <body>
-<?php include_once( URL_HEADER ); ?>
+<div class='head'><?php include_once( URL_HEADER ); ?></div>
     <form method = "post" action="board_insert.php" >
         <div class='update_list'>
             <div class='title_style'>
@@ -46,8 +46,10 @@
             </div>
                 <br>
             <div class='submit_style'>
-                <button type ='submit'><a id = "write_a">WRITE</a></button>
-                <button type="button"><a href="board_list.php?page_num=<?php echo $page_num = 1 ?>" id = "write_a">ESC</a></button>
+                <label for="wirte" id ="write_a">
+                <button type ='submit'><a id = "write_a">WRITE</a></button></label>
+                <label for="esc">
+                <button type="button"><a href="board_list.php?page_num=<?php echo $page_num = 1 ?>" id = "write_a" name="esc">ESC</a></button></label>
             </div>
             
         </div>    

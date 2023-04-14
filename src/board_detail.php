@@ -22,7 +22,7 @@
     <title>Detail</title>
 </head>
 <body>
-<?php include_once( URL_HEADER ); ?>
+<div class='head'><?php include_once( URL_HEADER ); ?></div>
     <div class= 'detail_list'>
         <div class='bno_style'>
             <div class='no'>NO.</div>
@@ -43,13 +43,15 @@
     
 
         <div class='button_style'>
+            <label for="write_a">
             <button type="button">
-                <a href="board_update.php?board_no=<?php echo $result_info["board_no"]?>" id = "write_a">UPDATE</a></button> 
+                <a href="board_update.php?board_no=<?php echo $result_info["board_no"]?>" id = "write_a" name ="write_a">UPDATE</a></button></label> 
             <!-- 수정 버튼은 현재 boardno의 것이 와야 되기 때문에 result값을 받아온다. -->
+            <label for="write_b" >
             <button type="button">
-                <a href="board_list.php?page_num=<?php echo $page_num = 1 ?>" id = "write_a">LIST</a></button>
-
-            <button type ="button"><a href="board_delete.php?board_no=<?php echo $result_info["board_no"]?>" id = "write_a">DELETE</a></button>
+                <a href="board_list.php?page_num=<?php echo $page_num = 1 ?>" id = "write_b" name = "write_b">LIST</a></button></label>
+            <label for="write_c">
+            <button type ="button"><a href="board_delete.php?board_no=<?php echo $result_info["board_no"]?>" id = "write_c">DELETE</a></button></label>
         </div>
     </div>
 </body>

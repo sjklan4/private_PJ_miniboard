@@ -6,6 +6,9 @@ body{
     text-align: center;
     padding: 5%;
     margin: 3%;
+    border-top: 10px solid rgb(4, 51, 4);
+    border-bottom: 10px solid rgb(4, 51, 4);
+
 }
 
 #bno{
@@ -38,7 +41,40 @@ body{
     left : 100px;
     font-family: 'Cute Font', cursive;
     font-size: 25px;
+    overflow: hidden;
 }
+
+.update_list::before
+{
+    position: absolute;
+    top : 0px;
+    left:-2000px;
+    content:  url(./img/blingbling.png);
+    width : 70px;
+    height : 630px;
+    /* transform: skewX(-20deg); */
+    /* background-image: url(./img/blingbling.png); */
+}
+.update_list:hover
+{
+    background-color: rgba(255, 255, 255, 0.658);
+}
+.update_list:hover::before
+{
+    left :2000px;
+    transition: all 2s ease-in;
+    /* transition-delay: 0.3s; */
+}
+
+
+
+
+a
+{
+    color: rgb(4, 59, 4);
+    text-decoration: none;
+}
+
 input[type="text"]
 {
     font-family: 'Cute Font', cursive;
@@ -145,6 +181,16 @@ input[type="text"]
     color: aliceblue;
     text-decoration: none;
 }
+#write_b
+{
+    color: aliceblue;
+    text-decoration: none;
+}
+#write_c
+{
+    color: aliceblue;
+    text-decoration: none;
+}
 
 
 button
@@ -153,7 +199,6 @@ button
     height: 40px;
     padding: 10px;
     margin: 20px;
-
 }
 
 

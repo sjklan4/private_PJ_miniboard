@@ -4,7 +4,7 @@
     define( "URL_DB", DOC_ROOT."private_PJ_miniboard/src/common/db_common.php" );
     define( "URL_HEADER", DOC_ROOT."private_PJ_miniboard/src/board_header.php" );
     include_once( URL_DB ); //경로상의 파일을 가져오는 함수구문 
-    
+    //위 define구문은 브라우져에서 화면을 출력하기 위해서 데이터가 있는 파일 위치의 경로를 지정해주는 역활을 한다.
 
     //if구문을 통해서 page_num배열의 키값을 받아와서 키값이 있을때 와 없을때는 1로 받아서 리턴 시킨다. $_GET은 슈퍼 글로벌 변수 
     if( array_key_exists( "page_num", $_GET ))
@@ -15,13 +15,16 @@
     {
         $page_num = 1;
     }
-
+    // var_dump($page_num);
 
 
     $limit_num = 5; //db_common의 sql문에 limit_num에 있는 값을 조정할때 사용한다.
     // $page_num = $arr_get["page_num"];
     // 게시판 정보 테이블 전체 카운트 획득 
     $result_cnt =  select_board_info_cnt();
+    
+    
+    
 
     //max page number
     $max_page_num = ceil( (int)$result_cnt[0]["cnt"] / $limit_num );
@@ -58,17 +61,16 @@
     <title>게시판</title>
     
 </head>
-
-    <?php include_once( URL_HEADER ); ?>
+<div class='head'><?php include_once( URL_HEADER ); ?></div>
 <div class='wrap'>
     <div class='cap'> BOARD INFORMATION</div>
     <table class='table table-striped'>
     <!-- php와 연동을 위해서 '' 로 추가구문 작성 -->
         <thead> 
             <tr>
-                <th class='board_no'>INF.NO</th>
-                <th class='board_title'>BOARD TITLE</th>
-                <th class='board_date'>TODATE</th>
+                    <th class='board_no'>INF.NO</th>
+                    <th class='board_title'>BOARD TITLE</th>
+                    <th class='board_date'>TODATE</th>
                 </div>
             </tr>
         </thead>

@@ -56,7 +56,7 @@
 </head>
 
 <body>
-<?php include_once( URL_HEADER ); ?>
+<div class='head'><?php include_once( URL_HEADER ); ?></div>
 <form method = "post" action="board_update.php" >
     <div class='update_list'>
         <div class='bno_style'>
@@ -81,9 +81,9 @@
         <div class='submit_style'>
             <button type ='submit'><a id = "write_a">UPDATE</a></button>
             <button type ='submit'>
-                <a href="board_list.php?page_num=<?php echo $page_num = 1 ?>" id = "write_a">LIST</button>
+                <a href="board_list.php?page_num=<?php echo $page_num = 1 ?>" id = "write_b">LIST</button>
             <button type="button">
-            <a href="board_detail.php?board_no=<?php echo $result_info["board_no"]?>" id = "write_a">ESC</a></button>
+            <a href="board_detail.php?board_no=<?php echo $result_info["board_no"]?>" id = "write_c">ESC</a></button>
         </div>
         
     </div>    

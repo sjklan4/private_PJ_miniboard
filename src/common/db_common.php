@@ -30,6 +30,7 @@ function db_conn( &$param_conn )
 
 }
 
+//sql문에 지정된 컬럼들만 가져오게 하는 함수값이다.
 function select_board_info_paging( &$param_arr)
 {
     $sql = 
@@ -73,6 +74,7 @@ function select_board_info_paging( &$param_arr)
     return $result;
 }
 
+//레코드를 조회 요청하면 전체 자료들중 삭제가 안된 flg가 0인 상태의 자료들의 레코드수를 가져오게 해주는 함수구문이다.
 function select_board_info_cnt()
 {
     $sql = 
